@@ -40,50 +40,53 @@ uint64_t countNestedParentheses(const std::string& str)
         // Create open and close counters
         int openCount = 0, closeCount = 0;
 
-        // Walk through string
-        for (int j = 0; j < stringLength; j++)
+        if (str[i] == '(')
         {
-            // Check for open brace 
-            if (str[j] == '(')
+            // Walk through string
+            for (int j = 0; j < stringLength; j++)
             {
-                openCount++;
+                // Check for open brace 
+                if (str[j] == '(')
+                {
+                    openCount++;
+                }
+                // Else check for closed brace
+                else if (str[j] == ')')
+                {
+                    // Adjust Counts for closed brace
+                    if (openCount)
+                    {
+                        openCount--;
+                    }
+                    else
+                    {
+                        closeCount++;
+                    }
+                }
             }
-            // Else check for closed brace
-            else if (str[j] == ')')
+
+            // openCount and no closing 
+            if (openCount && !closeCount)
             {
-                // Adjust Counts for closed brace
-                if (openCount)
-                {
-                    openCount--;
-                }
-                else
-                {
-                    closeCount++;
-                }
+                open[openCount]++;
             }
-        }
 
-        // openCount and no closing 
-        if (openCount && !closeCount)
-        {
-            open[openCount]++;
-        }
+            // closeCountosing and no openCounting 
+            if (closeCount && !openCount)
+            {
+                close[closeCount]++;
+            }
 
-        // closeCountosing and no openCounting 
-        if (closeCount && !openCount)
-        {
-            close[closeCount]++;
-        }
-
-        // Neither openCount or close
-        if (!openCount && !closeCount)
-        {
-            count++;
+            // Neither openCount or close
+            if (!openCount && !closeCount)
+            {
+                count++;
+            }
         }
     }
 
     // Divide in half to get number of pairs
-    count = count / 2;
+    // count = count / 2;
 
     // Check open to find minumum
     for (auto it : open)
