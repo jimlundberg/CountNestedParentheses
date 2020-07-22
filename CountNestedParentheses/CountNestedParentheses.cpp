@@ -39,21 +39,22 @@ uint64_t countNestedParentheses(const std::string& str)
     {
         // Create open and close counters
         int openCount = 0, closeCount = 0;
-
+        
+        // Check for opening parenthese
         if (str[i] == '(')
         {
             // Walk through string
             for (int j = 0; j < stringLength; j++)
             {
-                // Check for open brace 
+                // Check for more open parenthese and count
                 if (str[j] == '(')
                 {
                     openCount++;
                 }
-                // Else check for closed brace
+                // Else if a closed parenthese
                 else if (str[j] == ')')
                 {
-                    // Adjust Counts for closed brace
+                    // Adjust counts
                     if (openCount)
                     {
                         openCount--;
