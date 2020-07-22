@@ -108,10 +108,11 @@ int main()
         "( ( ( 2 () * 2 ) + 1 ) / 8 ) ( )"
     };
 
-    for (decltype(strings.size()) i = 0; i <= strings.size() - 1; i++)
+    int size = strings.size();
+    for (int i = 0; i < size; i++)
     {
-        sentence += strings[i];
-        std::cout << countNestedParentheses(sentence) << std::endl;
+        sentence = strings[i];
+        std::cout << countNestedParentheses(sentence) << " Parentheses found in " << "\"" << sentence << "\"" << std::endl;
     }
 
     cin.get();
