@@ -65,19 +65,19 @@ uint64_t countNestedParentheses(const std::string& str)
                 }
             }
 
-            // openCount and no closing 
+            // Open and no closing 
             if (openCount && !closeCount)
             {
                 open[openCount]++;
             }
 
-            // closeCountosing and no openCounting 
+            // Close and no open
             if (closeCount && !openCount)
             {
                 close[closeCount]++;
             }
 
-            // Neither openCount or close
+            // Neither open or close
             if (!openCount && !closeCount)
             {
                 count++;
@@ -100,7 +100,6 @@ uint64_t countNestedParentheses(const std::string& str)
 // Testing code
 int main()
 {
-    string sentence = "";
     vector<string> strings = 
     { 
         " ",
@@ -112,6 +111,7 @@ int main()
     };
 
     int size = strings.size();
+    string sentence = "";
     for (int i = 0; i < size; i++)
     {
         sentence = strings[i];
